@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario</title>
+</head>
+<body>
+    {% if numero_gestion %}
+        <div style="background-color: #ffcccc; padding: 10px; margin-bottom: 10px;">
+            <p style="color: #ff0000;">ANOTE ESTE CÓDIGO N° {{ numero_gestion }} PARA FUTURAS CONSULTAS</p>
+        </div>
+    {% endif %}
+
+    <h1>Completa tus datos</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Finalizar">
+    </form>
+</body>
+</html>

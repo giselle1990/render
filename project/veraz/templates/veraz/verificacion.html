@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verificación de Supresión de Datos</title>
+    <style>
+        body {
+            background-color: #fff; /* Fondo blanco */
+            color: #ff0000; /* Texto en rojo */
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #ff0000; /* Color rojo para el título */
+        }
+        form {
+            background-color: #ffe6e6; /* Fondo del formulario */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+        }
+        label {
+            color: #ff0000; /* Color rojo para las etiquetas */
+        }
+        input[type="text"],
+        input[type="submit"] {
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc; /* Borde gris */
+        }
+        input[type="submit"] {
+            background-color: #ff0000; /* Fondo rojo para el botón */
+            color: white; /* Texto blanco para el botón */
+            cursor: pointer;
+        }
+        .error-message {
+            color: red; /* Color rojo para los mensajes de error */
+        }
+    </style>
+</head>
+<body>
+    {% include 'veraz/navbar.html' %} <!-- Incluir el Navbar -->
+    <h1>Verificación de Supresión de Datos</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <p>Por favor, seleccione una opción:</p>
+        <label><input type="radio" name="opcion" value="1"> Tengo deuda de préstamos de hace 5 años o más</label><br>
+        <label><input type="radio" name="opcion" value="2"> Tengo deuda de préstamos de menos de 5 años</label><br>
+        <label><input type="radio" name="opcion" value="3"> Tengo deuda de tarjeta de crédito de hace 3 años o más</label><br>
+        <label><input type="radio" name="opcion" value="4"> Tengo deuda de tarjeta de crédito de menos de 3 años</label><br>
+
+        <p>Ingresa Mes y Año de la deuda:</p>
+        <input type="text" name="mes_deuda" placeholder="Mes (1-12)">
+        <input type="text" name="anio_deuda" placeholder="Año (ej. 2022)"><br>
+
+        <input type="submit" value="Verificar">
+    </form>
+
+    {% if mensaje %}
+        <p class="error-message">{{ mensaje }}</p>
+    {% endif %}
+</body>
+</html>

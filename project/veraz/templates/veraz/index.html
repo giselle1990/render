@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenido a Mi Página</title>
+    <style>
+        body {
+            background-color: #fff; /* Fondo blanco */
+            color: #ff0000; /* Texto en rojo */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #ff7700; /* Naranja */
+            color: #fff; /* Texto blanco */
+            padding: 10px;
+        }
+        .navbar ul {
+            list-style-type: none; /* Quitar viñetas de la lista */
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .navbar ul li {
+            display: inline; /* Mostrar elementos de la lista en línea */
+            margin-right: 20px; /* Espaciado entre elementos */
+        }
+        .navbar ul li a {
+            color: #fff; /* Texto blanco */
+            text-decoration: none; /* Quitar subrayado de los enlaces */
+            font-weight: bold; /* Texto en negrita */
+        }
+        .navbar ul li a:hover {
+            color: #ff0000; /* Cambia a color rojo al pasar el mouse */
+        }
+        .section {
+            background-color: #ffcccc; /* Rojo claro */
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+        }
+        h2 {
+            color: #ff0000; /* Texto en rojo */
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="{% url 'veraz' %}">Veraz</a></li>
+            <li><a href="#">Conoce tu historial completo</a></li>
+            <!-- Agrega más opciones si es necesario -->
+        </ul>
+    </div>
+
+    <div class="container">
+        <h1>Bienvenido a Mi Página</h1>
+        <div class="section">
+            <h2>Sección Adicional</h2>
+            <p>Aquí puedes agregar contenido adicional con los estilos rojos, blancos y naranjas que deseas.</p>
+        </div>
+    </div>
+</body>
+</html>
