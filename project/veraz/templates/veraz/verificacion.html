@@ -1,25 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
     <title>Verificación de Supresión de Datos</title>
     <style>
         body {
-            background-color: #fff; /* Fondo blanco */
-            color: #ff0000; /* Texto en rojo */
+            background-color: #003366; /* Fondo azul marino */
+            color: #FFFFFF; /* Texto blanco */
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh; /* Altura mínima del viewport */
         }
-        h1 {
-            color: #ff0000; /* Color rojo para el título */
+        .navbar {
+            background-color: #6699CC;
+            padding: 10px 20px;
+            width: 100%;
+            box-sizing: border-box;
         }
-        form {
-            background-color: #ffe6e6; /* Fondo del formulario */
+        .navbar h1 {
+            margin: 0;
+            padding: 0;
+            font-size: 24px;
+            text-align: center;
+        }
+        .content {
+            background-color: #D3D3D3; /* Fondo del formulario en gris claro */
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+            max-width: 600px; /* Ancho máximo del contenido */
+            width: 100%;
+            box-sizing: border-box;
+        }
+        form {
+            margin: 0 auto; /* Centrar el formulario */
+            width: 100%; /* Ancho del formulario al 100% */
+            box-sizing: border-box;
         }
         label {
-            color: #ff0000; /* Color rojo para las etiquetas */
+            color: #003366; /* Color azul marino para las etiquetas */
+            display: block;
+            margin-bottom: 10px;
         }
         input[type="text"],
         input[type="submit"] {
@@ -27,37 +53,82 @@
             padding: 8px;
             border-radius: 5px;
             border: 1px solid #ccc; /* Borde gris */
+            width: calc(100% - 20px);
+            box-sizing: border-box;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
         }
         input[type="submit"] {
-            background-color: #ff0000; /* Fondo rojo para el botón */
+            background-color: #6699CC; /* Fondo azul claro para el botón */
             color: white; /* Texto blanco para el botón */
             cursor: pointer;
+            border: none;
+            width: auto; /* Ajustar el ancho del botón */
+        }
+        input[type="submit"]:hover {
+            background-color: #FFA07A; /* Fondo naranja suave al pasar el mouse */
         }
         .error-message {
-            color: red; /* Color rojo para los mensajes de error */
+            color: #FF0000; /* Color rojo para los mensajes de error */
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .messages {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+        .messages li {
+            margin-bottom: 10px;
+        }
+        .error {
+            color: #FF0000; /* Rojo para mensajes de error */
+        }
+        .success {
+            color: #00FF00; /* Verde para mensajes de éxito */
+        }
+        @media (max-width: 600px) {
+            form {
+                padding: 10px;
+            }
+            input[type="text"],
+            input[type="submit"] {
+                padding: 6px;
+                width: calc(100% - 12px);
+            }
         }
     </style>
 </head>
 <body>
-    {% include 'veraz/navbar.html' %} <!-- Incluir el Navbar -->
-    <h1>Verificación de Supresión de Datos</h1>
-    <form method="POST">
-        {% csrf_token %}
-        <p>Por favor, seleccione una opción:</p>
-        <label><input type="radio" name="opcion" value="1"> Tengo deuda de préstamos de hace 5 años o más</label><br>
-        <label><input type="radio" name="opcion" value="2"> Tengo deuda de préstamos de menos de 5 años</label><br>
-        <label><input type="radio" name="opcion" value="3"> Tengo deuda de tarjeta de crédito de hace 3 años o más</label><br>
-        <label><input type="radio" name="opcion" value="4"> Tengo deuda de tarjeta de crédito de menos de 3 años</label><br>
+    <div class="navbar">
+        <h1>Verificación de Supresión de Datos</h1>
+    </div>
 
-        <p>Ingresa Mes y Año de la deuda:</p>
-        <input type="text" name="mes_deuda" placeholder="Mes (1-12)">
-        <input type="text" name="anio_deuda" placeholder="Año (ej. 2022)"><br>
+    <div class="content">
+        <form method="POST" action="{% url 'verificar_supresion_de_datos' %}">
+            {% csrf_token %}
+            <p>Por favor, seleccione una opción:</p>
+            <label><input type="radio" name="opcion" value="1"> Tengo deuda de préstamos de hace 5 años o más</label>
+            <label><input type="radio" name="opcion" value="2"> Tengo deuda de préstamos de menos de 5 años</label>
+            <label><input type="radio" name="opcion" value="3"> Tengo deuda de tarjeta de crédito de hace 3 años o más</label>
+            <label><input type="radio" name="opcion" value="4"> Tengo deuda de tarjeta de crédito de menos de 3 años</label>
 
-        <input type="submit" value="Verificar">
-    </form>
+            <p>Ingresa Mes y Año de la deuda:</p>
+            <input type="text" name="mes_deuda" placeholder="Mes (1-12)">
+            <input type="text" name="anio_deuda" placeholder="Año (ej. 2022)">
 
-    {% if mensaje %}
-        <p class="error-message">{{ mensaje }}</p>
-    {% endif %}
+            <input type="submit" value="Verificar">
+        </form>
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
 </body>
 </html>

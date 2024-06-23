@@ -3,5 +3,7 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('veraz/', views.verificar_supresion_de_datos, name='veraz'),
+    path('verificar/', views.verificar_supresion_de_datos, name='verificar_supresion_de_datos'),
+    path('historial/', views.historial, name='historial'),
+    path('datos/', views.datos_view, name='datos_view'),
 ]

@@ -122,3 +122,19 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+import os
+
+# Establece la ruta base de tu proyecto
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Define la URL base para los archivos estáticos
+STATIC_URL = '/static/'
+
+# Define la ruta donde se almacenarán los archivos estáticos
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Define las rutas donde se encuentran los archivos estáticos de tu aplicación
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]

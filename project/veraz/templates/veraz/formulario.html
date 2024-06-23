@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Formulario</title>
+    <!-- Incluye tus estilos y scripts necesarios -->
 </head>
 <body>
-    {% if numero_gestion %}
-        <div style="background-color: #ffcccc; padding: 10px; margin-bottom: 10px;">
-            <p style="color: #ff0000;">ANOTE ESTE CÓDIGO N° {{ numero_gestion }} PARA FUTURAS CONSULTAS</p>
-        </div>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
     {% endif %}
 
-    <h1>Completa tus datos</h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Finalizar">
+        <button type="submit">Enviar</button>
     </form>
 </body>
 </html>
