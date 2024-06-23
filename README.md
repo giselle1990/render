@@ -1,5 +1,117 @@
-1) Crear entorno virtual
-2) installar Diango con PIP install Django
-3) Va a salir VERAZ/ hay que ir a cd project
-4) en esa carpeta va "python manage.py runserver"
-5) Ahi se ejecuta el proyecto 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenido a Mi Página</title>
+    {% load static %}
+    <style>
+        body {
+            background-image: url("{% static 'fondo.jpg' %}");
+            background-color: rgba(0, 51, 102, 0.5); /* Fondo azul marino traslúcido */
+            background-blend-mode: overlay; /* Mezcla la imagen de fondo con el color de fondo */
+            color: #FFFFFF; /* Texto blanco */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .navbar {
+            background-color: #6699CC; /* Azul claro */
+            color: #FFFFFF; /* Texto blanco */
+            padding: 10px;
+        }
+        .navbar ul {
+            list-style-type: none; /* Quitar viñetas de la lista */
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .navbar ul li {
+            display: inline; /* Mostrar elementos de la lista en línea */
+            margin-right: 20px; /* Espaciado entre elementos */
+        }
+        .navbar ul li a {
+            color: #FFFFFF; /* Texto blanco */
+            text-decoration: none; /* Quitar subrayado de los enlaces */
+            font-weight: bold; /* Texto en negrita */
+        }
+        .navbar ul li a:hover {
+            color: #FFA07A; /* Cambia a color naranja suave al pasar el mouse */
+        }
+        .container {
+            padding: 20px;
+        }
+        .section {
+            background-color: #D3D3D3; /* Gris claro */
+            color: #333333; /* Texto gris oscuro */
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+        }
+        h1, h2 {
+            color: black; /* Texto blanco */
+            text-align: center;
+        }
+        .mensaje {
+            background-color: #98FB98; /* Verde suave */
+            color: #003366; /* Texto azul marino */
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .columna {
+            float: right;
+            width: 25%;
+            padding: 10px;
+        }
+        .columna a {
+            display: block;
+            background-color: #003366; /* Fondo azul marino */
+            color: #FFFFFF; /* Texto blanco */
+            padding: 7px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px; /* Espaciado entre enlaces */
+            border-radius: 5px; /* Bordes redondeados */
+        }
+        .columna a:hover {
+            background-color: #FFA07A; /* Fondo naranja suave al pasar el mouse */
+            color: #003366; /* Texto azul marino */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="{% url 'verificar_supresion_de_datos' %}">Veraz</a></li>
+            <li><a href="{% url 'historial' %}">Conoce tu historial completo</a></li>
+            <!-- Agrega más opciones si es necesario -->
+        </ul>
+    </div>
+
+    <div class="container">
+        <h1></h1>
+        {% if messages %}
+        <div class="mensaje">
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+        </div>
+        {% endif %}
+        <div class="section">
+            <h2>Bienvenido a Salí del VERAZ</h2>
+            <p>Tenes deudas y no sabes si podes salir de VERAZ, NOSIS? Aca vas a encontrar la respuesta, y en caso afirmativo comenzar el tramite </p>
+        </div>
+    </div>
+
+    <div class="columna">
+        <a href="#">Enlace 1</a>
+        
+    </div>
+
+
