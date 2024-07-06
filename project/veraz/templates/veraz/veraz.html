@@ -1,0 +1,17 @@
+<!-- En veraz.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario Veraz</title>
+    <!-- Incluye tus estilos y scripts necesarios -->
+</head>
+<body>
+    <h2>Completa tus datos</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>

@@ -1,28 +1,16 @@
 from django import forms
-from .models import Formulario
 
-class FormularioForm(forms.ModelForm):
-    class Meta:
-        model = Formulario
-        fields = ['nombre', 'apellido']
+class VerazForm(forms.Form):
+    OPCIONES = [
+        (1, 'Tengo deuda de préstamos de hace 5 años o más'),
+        (2, 'Tengo deuda de préstamos de menos de 5 años'),
+        (3, 'Tengo deuda de tarjeta de crédito de hace 3 años o más'),
+        (4, 'Tengo deuda de tarjeta de crédito de menos de 3 años'),
+    ]
+    opcion = forms.ChoiceField(choices=OPCIONES, widget=forms.RadioSelect, label='Seleccione una opción')
 
-from django import forms
-from .models import Datos
-
-from django import forms
-from .models import Datos
-
-class DatosForm(forms.ModelForm):
-    class Meta:
-        model = Datos
-        fields = ['nombre', 'apellido', 'email', 'direccion', 'archivo', 'numero_gestion']
-        labels = {
-            'archivo': 'Sube tu archivo:',
-        }
-        help_texts = {
-            'archivo': 'Suba DNI frente y dorso y LIBRE DEUDA DE LA EMPRESA si lo posee',
-        }
-class FormularioHistorial(forms.Form):
-    nombre = forms.CharField(label='Nombre', max_length=100)
-    apellido = forms.CharField(label='Apellido', max_length=100)
-    cuil = forms.CharField(label='CUIL', max_length=11)
+class NombreApellidoTelefonoCUILForm(forms.Form):
+    nombre = forms.CharField(max_length=100, label='Nombre')
+    apellido = forms.CharField(max_length=100, label='Apellido')
+    telefono = forms.CharField(max_length=20, label='Teléfono')
+    cuil = forms.CharField(max_length=20, label='CUIL')

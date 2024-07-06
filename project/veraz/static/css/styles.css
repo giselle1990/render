@@ -1,0 +1,96 @@
+/* static/css/styles.css */
+
+:root {
+    --Principal: #6699CC;
+    --Neutro: #240115;
+    --Acento: #DE3C4B;
+    --Blanco: #FFFFFF;
+    --Negro: #000000;
+    --GrisOscuro: #003366;
+    --GrisMedio: #B7B7AF;
+    --GrisClaro: #D9D9D9;
+}
+
+body {
+    background-color: var(--Principal);
+    color: var(--Blanco);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1416.92px;
+    height: auto;
+    background-color: var(--Principal);
+    border: 1px solid var(--Negro);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(600, 255, 255, 0.5); /* Efecto relieve */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 40px; /* Añadido para separar los recuadros */
+    padding: 20px;
+    border-radius: 10px; /* Bordes redondeados para un mejor efecto */
+}
+
+h1 {
+    color: var(--Acento);
+}
+
+.recuadro-rojo {
+    position: relative;
+    width: 90%;
+    max-width: 949px;
+    height: 77px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 40px; /* Espacio adicional entre los recuadros */
+    background-color: var(--Acento);
+}
+
+.recuadro-rojo svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.texto-rojo {
+    position: relative;
+    color: var(--Blanco);
+    font-size: 20px; /* Tamaño de fuente ajustado para encajar el texto */
+    font-weight: bold;
+    padding: 0 10px; /* Añadido para evitar que el texto se pegue al borde */
+    text-align: center; /* Asegura que el texto esté centrado */
+    flex: 1;
+}
+
+.imagen {
+    position: relative;
+    width: auto;
+    height: 50px; /* Ajustar según sea necesario */
+    margin-left: 10px; /* Espacio entre la imagen y el texto */
+}
+
+@media (max-width: 768px) {
+    .recuadro-rojo {
+        height: auto;
+    }
+
+    .texto-rojo {
+        font-size: 16px; /* Ajustar tamaño de fuente para pantallas pequeñas */
+        padding: 10px; /* Ajustar padding para pantallas pequeñas */
+    }
+
+    .imagen {
+        width: auto;
+        height: 40px; /* Ajustar según sea necesario para pantallas pequeñas */
+        margin-left: 5px; /* Ajustar según sea necesario */
+    }
+}

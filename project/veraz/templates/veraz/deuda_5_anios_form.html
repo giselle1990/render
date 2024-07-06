@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Deuda de 5 años o más</title>
+    <style>
+        /        body {
+            background-color: #3498db; /* Fondo azul */
+            color: #000000; /* Texto negro */
+            font-family: Arial, sans-serif;
+        }
+
+        .top-bar {
+            background-color: #000000; /* Fondo negro */
+            height: 50px;
+            /* Añade aquí tu contenido creativo dentro del div negro */
+            text-align: center;
+            line-height: 50px;
+            color: #ffffff; /* Texto blanco */
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff; /* Fondo blanco para el contenedor del formulario */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Sombra ligera */
+        }
+
+        form {
+            background-color: #ffffff; /* Fondo blanco para el formulario */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Sombra ligera */
+        }
+
+        form label {
+            color: #000000; /* Texto negro para las etiquetas */
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #e0e0e0; /* Borde gris claro */
+            border-radius: 4px;
+            font-size: 16px;
+            color: #000000; /* Texto negro para los campos */
+        }
+
+        form button {
+            background-color: #e74c3c; /* Botón rojo */
+            color: #ffffff; /* Texto blanco */
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #c0392b; /* Color rojo más oscuro al pasar el ratón */
+        }
+
+        h1 {
+            color: #000000; /* Título negro */
+            text-align: center;
+        }* Estilos CSS aquí... */
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <!-- Contenido del div negro aquí... -->
+    </div>
+
+    <div class="form-container">
+        <h1>Formulario para Deuda de 5 años o más</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>

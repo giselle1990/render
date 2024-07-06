@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Datos Guardados</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Datos guardados exitosamente</h1>
+        <div class="recuadro-rojo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="949" height="77" viewBox="0 0 949 77" fill="none">
+                <path d="M0 10C0 4.47715 4.47715 0 10 0H939C944.523 0 949 4.47715 949 10V67C949 72.5229 944.523 77 939 77H9.99998C4.47713 77 0 72.5229 0 67V10Z" fill="var(--Acento, #DE3C4B)"/>
+            </svg>
+            <span class="texto-rojo">Gracias por dejar sus datos! En 3 días hábiles se le enviará el historial por Whatsapp</span>
+        </div>
+        <div class="recuadro-rojo">
+            <img src="{% static 'public/image-2.png' %}" alt="Imagen" class="imagen">
+            <span class="texto-rojo">Envíanos foto de tu DNI frente y dorso <a href="https://wa.me/541167641220" target="_blank" class="link-whatsapp">AQUI</a></span>
+        </div>
+    </div>
+</body>
+</html>
