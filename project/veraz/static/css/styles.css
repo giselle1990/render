@@ -1,8 +1,5 @@
-/* static/css/styles.css */
-
 :root {
     --Principal: #6699CC;
-    --Neutro: #240115;
     --Acento: #DE3C4B;
     --Blanco: #FFFFFF;
     --Negro: #000000;
@@ -12,85 +9,88 @@
 }
 
 body {
-    background-color: var(--Principal);
-    color: var(--Blanco);
-    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Fondo claro */
+    color: var(--Negro);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: var(--Principal); /* Azul claro */
+    color: var(--Blanco); /* Texto blanco */
+    padding: 15px 20px;
     display: flex;
-    align-items: center;
     justify-content: center;
-    height: 100vh;
+}
+
+.navbar ul {
+    list-style-type: none; /* Quitar viñetas de la lista */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar ul li a {
+    color: var(--Blanco); /* Texto blanco */
+    text-decoration: none; /* Quitar subrayado de los enlaces */
+    font-weight: bold; /* Texto en negrita */
+    font-size: 1em;
+}
+
+.navbar ul li a:hover {
+    color: #FFA07A; /* Cambia a color naranja suave al pasar el mouse */
 }
 
 .container {
     width: 90%;
-    max-width: 1416.92px;
-    height: auto;
-    background-color: var(--Principal);
-    border: 1px solid var(--Negro);
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(600, 255, 255, 0.5); /* Efecto relieve */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: var(--Blanco);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+header, section {
+    margin-bottom: 40px;
+}
+
+header h1 {
+    color: var(--Principal);
+    font-size: 2.5em;
     text-align: center;
-    gap: 40px; /* Añadido para separar los recuadros */
-    padding: 20px;
-    border-radius: 10px; /* Bordes redondeados para un mejor efecto */
 }
 
-h1 {
+section h2 {
     color: var(--Acento);
+    font-size: 2em;
+    margin-bottom: 20px;
 }
 
-.recuadro-rojo {
-    position: relative;
-    width: 90%;
-    max-width: 949px;
-    height: 77px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-bottom: 40px; /* Espacio adicional entre los recuadros */
-    background-color: var(--Acento);
+section h3 {
+    color: var(--GrisOscuro);
+    font-size: 1.5em;
+    margin-bottom: 15px;
 }
 
-.recuadro-rojo svg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+section p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: var(--Negro);
 }
 
-.texto-rojo {
-    position: relative;
-    color: var(--Blanco);
-    font-size: 20px; /* Tamaño de fuente ajustado para encajar el texto */
-    font-weight: bold;
-    padding: 0 10px; /* Añadido para evitar que el texto se pegue al borde */
-    text-align: center; /* Asegura que el texto esté centrado */
-    flex: 1;
+.service-item {
+    margin-bottom: 30px;
 }
 
-.imagen {
-    position: relative;
-    width: auto;
-    height: 50px; /* Ajustar según sea necesario */
-    margin-left: 10px; /* Espacio entre la imagen y el texto */
+a {
+    color: var(--Acento);
+    text-decoration: none;
 }
 
-@media (max-width: 768px) {
-    .recuadro-rojo {
-        height: auto;
-    }
-
-    .texto-rojo {
-        font-size: 16px; /* Ajustar tamaño de fuente para pantallas pequeñas */
-        padding: 10px; /* Ajustar padding para pantallas pequeñas */
-    }
-
-    .imagen {
-        width: auto;
-        height: 40px; /* Ajustar según sea necesario para pantallas pequeñas */
-        margin-left: 5px; /* Ajustar según sea necesario */
-    }
+a:hover {
+    text-decoration: underline;
 }

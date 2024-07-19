@@ -1,4 +1,5 @@
 from django import forms
+from .models import Formulario, Datos, RegistroHistorial
 
 class VerazForm(forms.Form):
     OPCIONES = [
@@ -14,3 +15,10 @@ class NombreApellidoTelefonoCUILForm(forms.Form):
     apellido = forms.CharField(max_length=100, label='Apellido')
     telefono = forms.CharField(max_length=20, label='Teléfono')
     cuil = forms.CharField(max_length=20, label='CUIL')
+
+
+
+class HistorialForm(forms.ModelForm):
+    class Meta:
+        model = RegistroHistorial
+        fields = ['nombre', 'apellido', 'cuil']

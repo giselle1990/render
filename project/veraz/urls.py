@@ -9,4 +9,6 @@ urlpatterns = [
     path('tarjeta-3-anios/', views.tarjeta_3_anios, name='tarjeta_3_anios'),
     path('tarjeta-menos/', views.tarjeta_menos, name='tarjeta_menos'),
     path('datos-guardados/', views.datos_guardados, name='datos_guardados'),
+    path('historial/', views.historial_view, name='historial'),
+    path('quienes_somos/', views.quienes_somos, name='quienes_somos'),
 ]

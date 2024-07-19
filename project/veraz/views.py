@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from .forms import VerazForm, NombreApellidoTelefonoCUILForm
+from .forms import VerazForm, NombreApellidoTelefonoCUILForm, HistorialForm
+from .models import Formulario, Datos, RegistroHistorial
 
 def index(request):
     return render(request, 'veraz/index.html')
@@ -30,18 +31,29 @@ def deuda_5_anios(request):
     if request.method == 'POST':
         form_nombre_apellido_telefono_cuil = NombreApellidoTelefonoCUILForm(request.POST)
         if form_nombre_apellido_telefono_cuil.is_valid():
-            # Guardar los datos si es necesario
-            # Redirigir a la página de datos guardados
+            # Guardar los datos en la base de datos
+            form_data = form_nombre_apellido_telefono_cuil.cleaned_data
+            Datos.objects.create(
+                nombre=form_data['nombre'],
+                apellido=form_data['apellido'],
+                cuil=form_data['cuil'],
+                telefono=form_data['telefono']
+            )
             return redirect('datos_guardados')
 
-    # Si no se ha enviado el formulario o no es válido, mostrar el formulario
     form_nombre_apellido_telefono_cuil = NombreApellidoTelefonoCUILForm()
     return render(request, 'veraz/deuda_5_anios_form.html', {'form': form_nombre_apellido_telefono_cuil})
+
 def deuda_menos(request):
     if request.method == 'POST':
         form_nombre_apellido_telefono_cuil = NombreApellidoTelefonoCUILForm(request.POST)
         if form_nombre_apellido_telefono_cuil.is_valid():
-            # Procesar el formulario y redirigir a datos_guardados.html
+            form_data = form_nombre_apellido_telefono_cuil.cleaned_data
+            Formulario.objects.create(
+                nombre=form_data['nombre'],
+                apellido=form_data['apellido'],
+                numero_gestion=form_data.get('numero_gestion', '')
+            )
             return redirect('datos_guardados')
 
     form_nombre_apellido_telefono_cuil = NombreApellidoTelefonoCUILForm()
@@ -51,7 +63,13 @@ def tarjeta_3_anios(request):
     if request.method == 'POST':
         form_nombre_apellido_telefono_cuil = NombreApellidoTelefonoCUILForm(request.POST)
         if form_nombre_apellido_telefono_cuil.is_valid():
-            # Procesar el formulario y redirigir a datos_guardados.html
+            form_data = form_nombre_apellido_telefono_cuil.cleaned_data
+            Datos.objects.create(
+                nombre=form_data['nombre'],
+                apellido=form_data['apellido'],
+                cuil=form_data['cuil'],
+                telefono=form_data['telefono']
+            )
             return redirect('datos_guardados')
 
     form_nombre_apellido_telefono_cuil = NombreApellidoTelefonoCUILForm()
@@ -61,7 +79,12 @@ def tarjeta_menos(request):
     if request.method == 'POST':
         form_nombre_apellido_telefono_cuil = NombreApellidoTelefonoCUILForm(request.POST)
         if form_nombre_apellido_telefono_cuil.is_valid():
-            # Procesar el formulario y redirigir a datos_guardados.html
+            form_data = form_nombre_apellido_telefono_cuil.cleaned_data
+            Formulario.objects.create(
+                nombre=form_data['nombre'],
+                apellido=form_data['apellido'],
+                numero_gestion=form_data.get('numero_gestion', '')
+            )
             return redirect('datos_guardados')
 
     form_nombre_apellido_telefono_cuil = NombreApellidoTelefonoCUILForm()
@@ -69,3 +92,19 @@ def tarjeta_menos(request):
 
 def datos_guardados(request):
     return render(request, 'veraz/datos_guardados.html')
+
+def historial_view(request):
+    if request.method == 'POST':
+        form = HistorialForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('datos_guardados')  # O la URL a la que deseas redirigir después de guardar
+        else:
+            print(form.errors)  # Para depuración: imprime los errores del formulario
+    else:
+        form = HistorialForm()
+    
+    return render(request, 'veraz/historial.html', {'form': form})
+
+def quienes_somos(request):
+    return render(request, 'veraz/quienes_somos.html')

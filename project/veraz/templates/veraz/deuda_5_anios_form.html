@@ -3,40 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <title>Deuda de 5 años o más</title>
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /        body {
-            background-color: #3498db; /* Fondo azul */
-            color: #000000; /* Texto negro */
-            font-family: Arial, sans-serif;
+        :root {
+            --Principal: #3498db;
+            --TextoNegro: #000000;
+            --TextoBlanco: #ffffff;
+            --BotonRojo: #e74c3c;
+            --BotonRojoOscuro: #c0392b;
+            --FondoBlanco: #ffffff;
+            --BordeGrisClaro: #e0e0e0;
+            --SombraLigera: rgba(0, 0, 0, 0.1);
         }
 
-        .top-bar {
-            background-color: #000000; /* Fondo negro */
-            height: 50px;
-            /* Añade aquí tu contenido creativo dentro del div negro */
-            text-align: center;
-            line-height: 50px;
-            color: #ffffff; /* Texto blanco */
+        body {
+            background-image: url("{% static 'fondo.jpg' %}");
+            background-color: rgba(0, 51, 102, 0.5);
+            background-blend-mode: overlay;
+            color: var(--TextoBlanco);
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: var(--Principal);
+            color: var(--TextoBlanco);
+            padding: 10px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .navbar ul li {
+            margin: 0 20px;
+        }
+
+        .navbar ul li a {
+            color: var(--TextoBlanco);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .navbar ul li a:hover {
+            color: #FFA07A;
         }
 
         .form-container {
             max-width: 600px;
-            margin: 0 auto;
+            width: 90%;
+            margin: 100px auto 0;
             padding: 20px;
-            background-color: #ffffff; /* Fondo blanco para el contenedor del formulario */
+            background-color: var(--FondoBlanco);
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Sombra ligera */
+            box-shadow: 0 0 10px var(--SombraLigera);
         }
 
         form {
-            background-color: #ffffff; /* Fondo blanco para el formulario */
+            background-color: var(--FondoBlanco);
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Sombra ligera */
+            box-shadow: 0 0 10px var(--SombraLigera);
         }
 
         form label {
-            color: #000000; /* Texto negro para las etiquetas */
+            color: var(--TextoNegro);
         }
 
         form input[type="text"],
@@ -45,15 +96,15 @@
             width: 100%;
             padding: 10px;
             margin-bottom: 10px;
-            border: 1px solid #e0e0e0; /* Borde gris claro */
+            border: 1px solid var(--BordeGrisClaro);
             border-radius: 4px;
             font-size: 16px;
-            color: #000000; /* Texto negro para los campos */
+            color: var(--TextoNegro);
         }
 
         form button {
-            background-color: #e74c3c; /* Botón rojo */
-            color: #ffffff; /* Texto blanco */
+            background-color: var(--BotonRojo);
+            color: var(--TextoBlanco);
             border: none;
             padding: 10px 20px;
             font-size: 16px;
@@ -62,18 +113,22 @@
         }
 
         form button:hover {
-            background-color: #c0392b; /* Color rojo más oscuro al pasar el ratón */
+            background-color: var(--BotonRojoOscuro);
         }
 
         h1 {
-            color: #000000; /* Título negro */
+            color: var(--TextoNegro);
             text-align: center;
-        }* Estilos CSS aquí... */
+        }
     </style>
 </head>
 <body>
-    <div class="top-bar">
-        <!-- Contenido del div negro aquí... -->
+    <div class="navbar">
+        <ul>
+            <li><a href="{% url 'index' %}">Inicio</a></li>
+            <li><a href="{% url 'veraz' %}">Veraz</a></li>
+            <li><a href="{% url 'historial' %}">Pedí tu Historial Completo</a></li>
+        </ul>
     </div>
 
     <div class="form-container">
